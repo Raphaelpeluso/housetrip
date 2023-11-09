@@ -24,7 +24,7 @@ export default function Home() {
       </nav>
 
       <Titulo>Imoveis em alta</Titulo>
-      <section className="flex flex-col gap-4 p-4">
+      <section className="flex gap-4 p-4">
       <Card titulo='Casa ibirapuera' nota={8.9} ></Card>
       <Card titulo='Casa ibirapuera' nota={8.9}></Card>
       <Card titulo='Casa ibirapuera' nota={8.9}></Card>

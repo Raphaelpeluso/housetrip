@@ -1,4 +1,4 @@
-"use Client"
+"use client"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from 'react';
@@ -16,7 +16,7 @@ export default function Card({titulo, nota}) {
     }
     
     return (
-        <div className="flex flex-col items-center w-48 relatives">
+        <div className="flex flex-col items-center w-48 relative">
             {
 
                 favorito ?
