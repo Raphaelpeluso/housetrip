@@ -1,9 +1,29 @@
+"use client"
 import Card from '@/components/card'
 import Titulo from '@/components/titulo'
 import Image from 'next/image'
+import { useState } from 'react';
 
 export default function Home() {
 
+ //mudar esse codigo pois é exemplo
+ 
+  const [filmes, setFilmes] = useState([])
+
+ const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZTkyMjY2NzQ4MWFiMjA3ZDY0MjQ1MGIwZWZiNDYxZSIsInN1YiI6IjVlYTA5ZTZiYmU0YjM2MDAxYzU5NWExNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Vhu0pPCiIwmtrpyOHdBlQid8HJJllaHthn1MERS_ANg'
+  }
+};
+
+fetch('https://api.themoviedb.org/3/trending/movie/week?language=pt-BR', options)
+  .then(response => response.json())
+  .then(response => setFilmes(response.results))
+  .catch(err => console.error(err));
+
+//--------------------------------------------------------------------------------------------
   return (
 
     <main className="flex min-h-screen flex-col">
@@ -25,10 +45,8 @@ export default function Home() {
 
       <Titulo>Imoveis em alta</Titulo>
       <section className="flex gap-4 p-4">
-      <Card titulo='Casa ibirapuera' nota={8.9} ></Card>
-      <Card titulo='Casa ibirapuera' nota={8.9}></Card>
-      <Card titulo='Casa ibirapuera' nota={8.9}></Card>
-      <Card titulo='Casa ibirapuera' nota={8.9}></Card>
+      { filmes.map ( filme => <Card filme={filme}/>) }
+
       </section>
 
       <Titulo>Imoveis recomendados</Titulo>
